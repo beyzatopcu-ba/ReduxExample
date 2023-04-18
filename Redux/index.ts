@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import { favoriteReducer } from './FavoriteRedux';
+import { REDUCER_NAME, favoriteReducer } from './FavoriteRedux';
 
 const rootReducer = combineReducers({
-    favorite: favoriteReducer,
+    [REDUCER_NAME]: favoriteReducer,
 });
 
 export const store = createStore(rootReducer);

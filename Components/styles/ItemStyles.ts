@@ -10,4 +10,7 @@ export default StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 15,
     },
+    itemTouchable_Favorite: {
+        backgroundColor: 'yellow',
+    }
 });
