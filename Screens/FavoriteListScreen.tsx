@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import { SELECTORS } from "../Redux/FavoriteRedux";
 import { useMemo } from "react";
 import { dummyData } from "../DummyData";
+import { favoriteSelectors } from "../Redux/FavoriteReduxToolkit";
 
 const FavoriteListScreen = () => {
 
-    const favoriteIdList = useSelector(SELECTORS.favoriteList);
+    const favoriteIdList = useSelector(favoriteSelectors.favoriteList);
 
     const favoriteList = useMemo(() => {
         const _favoriteList = [];
