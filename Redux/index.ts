@@ -1,7 +1,12 @@
 import { createStore, combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+
 import { REDUCER_NAME, favoriteReducer } from './FavoriteRedux';
 import { favoriteSlice } from './FavoriteReduxToolkit';
-import { configureStore } from '@reduxjs/toolkit';
+import { animalSlice } from './AnimalRedux';
+import { all } from 'redux-saga/effects';
+import { animalSagas } from './AnimalSaga';
 
 
 /*
@@ -16,11 +21,23 @@ export const store = createStore(rootReducer);
 
 // Yeni yöntem
 
+const sagaMiddleware = createSagaMiddleware();
+
 export const store = configureStore({
     reducer: {
         [favoriteSlice.name]: favoriteSlice.reducer,
+        [animalSlice.name]: animalSlice.reducer,
     },
-})
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+});
+
+function* rootSagas() {
+    yield all([
+        ...animalSagas,
+    ]);
+}
+
+sagaMiddleware.run(rootSagas);
 
 
 export type RootState = ReturnType<typeof store.getState>

@@ -28,3 +28,16 @@ export const dummyData = [
         name: 'Zaniskari',
     },
 ];
+
+
+const request = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(dummyData);
+    }, 5000);
+});
+
+export const readAnimals = async (): Promise<typeof dummyData> => {
+    const animalData = await request;
+    console.log('okundu');
+    return animalData as typeof dummyData;
+}

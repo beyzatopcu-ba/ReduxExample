@@ -50,7 +50,6 @@ export const ACTION_CREATORS = {
 export const favoriteReducer: Reducer = (state: FavoriteState = INITIAL_STATE, action) => {
     switch (action.type) {
         case ACTION_TYPES.addToFavoriteList: {
-            console.log('heyy')
             const itemId = (action as PayloadAction<number>).payload;
 
             const copyState = [...state];
@@ -58,7 +57,6 @@ export const favoriteReducer: Reducer = (state: FavoriteState = INITIAL_STATE, a
                 copyState.push(itemId);
             }
 
-            console.log('returns', copyState);
 
             return copyState;
         }
@@ -88,8 +86,6 @@ export const SELECTORS = {
     },
     isItemFavorite: (itemId: number) => {
         return (rootState: { favorites: FavoriteState }) => {
-            console.log('item id', itemId);
-            console.log(rootState[REDUCER_NAME]);
             return rootState[REDUCER_NAME]?.includes(itemId) || false;
         }
     }

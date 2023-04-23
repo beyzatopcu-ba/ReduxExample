@@ -10,8 +10,6 @@ const Item = (props: { item: { id: number, name: string } }) => {
     const dispatch = useDispatch();
 
 
-    console.log('isFavorite', isFavorite);
-
     const _onPress = () => {
         if (!isFavorite) {
             /*

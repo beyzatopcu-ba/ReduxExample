@@ -88,8 +88,6 @@ export const favoriteSelectors = {
     },
     isItemFavorite: (itemId: number) => {
         return (rootState: RootState) => {
-            console.log('item id', itemId);
-            console.log(rootState[favoriteSlice.name]);
             return rootState[favoriteSlice.name]?.includes(itemId) || false;
         }
     }
